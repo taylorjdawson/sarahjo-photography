@@ -1,0 +1,51 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+#header {
+    /*TODO: Need to workout how this should scale with desktop.
+            consider: background-attachment: fixed;
+            requires figuring out how to control where the image starts (might just need to edit)
+    */
+    background-attachment: fixed;
+/*    background-position-y: 18%;*/
+    background-position-x: center;
+    background-size: cover;
+    background-image: url("../images/benjamin-combs-27619-unsplash.jpg");
+    height: 40vh;
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center; /*Consider: Using navbar div might be able to remove in future but depends if comps. get added to navbar*/
+}
+
+#navbar {
+
+}
+
+#navbar > h1 {
+    font-family: 'Sacramento', cursive;
+    color: white;
+}
+
+#photo-grid {
+    /*Consider: background: rgba(49, 86, 75, 0.14); keep white for now*/
+}
+
+.photo-card {
+
+}
+
+#pricing {
+    height: 70vh;
+}
+
+footer {
+    color: white;
+    background: rgb(172, 172, 172);
+    height: 50vh;
+}

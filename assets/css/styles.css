@@ -1,12 +1,27 @@
+/*
 html, body {
     height: 100%;
+}
+*/
+
+/*
+The following resets the border box to
+make padding more consistent
+Source: https://goo.gl/3ed2H
+*/
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 body {
     margin: 0;
 }
 
-#header {
+.header {
     /*TODO: Need to workout how this should scale with desktop.
             consider: background-attachment: fixed;
             requires figuring out how to control where the image starts (might just need to edit)
@@ -18,27 +33,82 @@ body {
     background-image: url("../images/benjamin-combs-27619-unsplash.jpg");
     height: 40vh;
     width:100%;
-    display:flex;
-    align-items: center;
+    /*display:flex;*/
+    /*align-items: center;*/
     justify-content: center; /*Consider: Using navbar div might be able to remove in future but depends if comps. get added to navbar*/
 }
 
-#navbar {
-
+/* The sticky class is added to the header
+with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    background: white;
+    color: black;
+}
+.sticky > h1 {
+    color: #000;
+}
+/* Add some top padding to the page content to prevent
+sudden quick movement (as the header gets a new position at
+the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 102px;
 }
 
-#navbar > h1 {
+.navbar {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    transition: 1s;
     font-family: 'Sacramento', cursive;
     color: white;
+/*    margin: 0;
+    padding-top: 2vh;*/
 }
 
 #photo-grid {
     /*Consider: background: rgba(49, 86, 75, 0.14); keep white for now*/
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px;
 }
 
-.photo-card {
-
+.column {
+    flex: 100%;
+    max-width: 100%;
+    padding: 0 4px;
 }
+
+/* Creates 2 columns on larger displays*/
+@media screen and (min-width: 600px) {
+    .column {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+/* Creates 4 columns on larger displays*/
+@media screen and (min-width: 800px) {
+    .column {
+        flex: 25%;
+        max-width: 25%;
+    }
+}
+
+.column img {
+    margin-top: 20px;
+    vertical-align: middle;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*#photo-grid > img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        height: 100%;
+    width: 100%;
+    max-width: 100%;
+}*/
 
 #pricing {
     height: 70vh;
@@ -46,6 +116,36 @@ body {
 
 footer {
     color: white;
-    background: rgb(172, 172, 172);
+    `rgba(231, 231, 231, 0.74);
     height: 50vh;
+}
+
+/*TODO: Remove when done*/
+/* Parallax base styles
+--------------------------------------------- */
+
+.parallax {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-perspective: 1px;
+    perspective: 1px;
+}
+
+.parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.parallax__layer--base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.parallax__layer--back {
+    -webkit-transform: translateZ(-1px);
+    transform: translateZ(-1px);
 }

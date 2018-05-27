@@ -1,18 +1,18 @@
 // IIFE - Immediately Invoked Function Expression
-(function(code) {
+(function (code) {
 
     // The global jQuery object is passed as a parameter
     code(window.jQuery, window, document);
 
-}(function($, window, document) {
+}(function ($, window, document) {
 
     // The $ is now locally scoped
 
     // Listen for the jQuery ready event on the document
-    $(function() {
+    $(function () {
 
         console.log('The DOM is ready');
-
+        console.log("tjd.im/g2g")
         // The DOM is ready!
 
     });
@@ -20,35 +20,24 @@
     /*Maybe remove this? or put it in an else stament idk...*/
     console.log('The DOM may not be ready');
 
-    /*Source: https://codepen.io/JTParrett/pen/BkDie*/
-    $.fn.moveIt = function(){
-        var $window = $(window);
-        var instances = [];
+    // When the user scrolls the page, execute myFunction
+    // window.onscroll = function () {
+    //     myFunction()
+    // };
 
-        $(this).each(function(){
-            instances.push(new moveItItem($(this)));
-        });
+    // Get the header
+    //let navbar = document.getElementById("navbar");
 
-        window.addEventListener('scroll', function(){
-            var scrollTop = $window.scrollTop();
-            instances.forEach(function(inst){
-                inst.update(scrollTop);
-            });
-        }, {passive: true});
-    };
+    // Get the offset position of the navbar
+    //let sticky = navbar.offsetTop;
 
-    var moveItItem = function(el){
-        this.el = $(el);
-        this.speed = parseInt(this.el.attr('data-scroll-speed'));
-    };
-
-    moveItItem.prototype.update = function(scrollTop){
-        this.el.css('transform', 'translateY(' + (scrollTop / this.speed) + 'px)');
-    };
-
-    // Initialization
-    $(function(){
-        $('[data-scroll-speed]').moveIt();
-    });
-
+    // Add the sticky class to the header when you reach its scroll position. Remove "sticky"
+    // when you leave the scroll position
+    // function myFunction() {
+    //     if (window.pageYOffset >= sticky) {
+    //         navbar.classList.add("sticky");
+    //     } else {
+    //         navbar.classList.remove("sticky");
+    //     }
+    // }
 }));

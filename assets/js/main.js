@@ -21,23 +21,38 @@
     console.log('The DOM may not be ready');
 
     // When the user scrolls the page, execute myFunction
-    // window.onscroll = function () {
-    //     myFunction()
-    // };
+    window.onscroll = function () {
+        myFunction()
+    };
 
     // Get the header
-    //let navbar = document.getElementById("navbar");
+    // let navbar = document.getElementById("navbar");
 
     // Get the offset position of the navbar
-    //let sticky = navbar.offsetTop;
+    // let sticky = navbar.offsetTop;
+    let $header = $('#header');
+    let $navbar = $('#navbar');
 
     // Add the sticky class to the header when you reach its scroll position. Remove "sticky"
     // when you leave the scroll position
-    // function myFunction() {
-    //     if (window.pageYOffset >= sticky) {
-    //         navbar.classList.add("sticky");
-    //     } else {
-    //         navbar.classList.remove("sticky");
-    //     }
-    // }
+    function myFunction() {
+
+        let bottom = $header.offset().top + $header.outerHeight(true);
+        /*TODO: Switch to js if more efficient to get height in pure js .offsetHeight*/
+        if( (bottom - window.pageYOffset) < $navbar.outerHeight(true)) {
+            // console.log("show nav bar");
+            $navbar.addClass("sticky");
+        }
+        else {
+            $navbar.removeClass("sticky");
+        }
+
+
+        // if (window.pageYOffset >= sticky) {
+        //     navbar.classList.add("sticky");
+        // } else {
+        //     navbar.classList.remove("sticky");
+        // }
+        // console.log( "Bottom: " + bottom + " Window Offset: " + window.pageYOffset)
+    }
 }));

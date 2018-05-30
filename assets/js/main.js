@@ -17,16 +17,17 @@
 
     });
 
-    /*Maybe remove this? or put it in an else stament idk...*/
     console.log('The DOM may not be ready');
 
+
+    /************************************************
+     * Sticky navigation bar scripts
+     * Source: https://codepen.io/nathanlong/pen/kkLKrL
+     *************************************************/
     // When the user scrolls the page, execute myFunction
     window.onscroll = function () {
         myFunction()
     };
-
-    // Get the header
-    // let navbar = document.getElementById("navbar");
 
     // Get the offset position of the navbar
     // let sticky = navbar.offsetTop;
@@ -39,20 +40,122 @@
 
         let bottom = $header.offset().top + $header.outerHeight(true);
         /*TODO: Switch to js if more efficient to get height in pure js .offsetHeight*/
-        if( (bottom - window.pageYOffset) < $navbar.outerHeight(true)) {
-            // console.log("show nav bar");
+        if ((bottom - window.pageYOffset) < $navbar.outerHeight(true)) {
             $navbar.addClass("sticky");
         }
         else {
             $navbar.removeClass("sticky");
         }
-
-
-        // if (window.pageYOffset >= sticky) {
-        //     navbar.classList.add("sticky");
-        // } else {
-        //     navbar.classList.remove("sticky");
-        // }
-        // console.log( "Bottom: " + bottom + " Window Offset: " + window.pageYOffset)
     }
+
+    /************************************************
+     * Contact section form scripts
+     * Enables the label, which doubles as the place
+     * holder text, to float out of the way when the
+     * input field comes into focus.
+     * .
+     * .
+     * Source: https://codepen.io/nathanlong/pen/kkLKrL
+     *************************************************/
+    let $input = $('input');
+    let $textarea = $('#message');
+
+    $input.focus(function () {
+        $(this).parents('.form-group').addClass('focused');
+    });
+
+    $textarea.focus(function () {
+        $(this).parents('.form-group').addClass('focused');
+    });
+
+    $input.blur(function () {
+        let inputValue = $(this).val();
+        if (inputValue === "") {
+            $(this).removeClass('filled');
+            $(this).parents('.form-group').removeClass('focused');
+        } else {
+            $(this).addClass('filled');
+        }
+    });
+
+    $textarea.blur(function () {
+        let inputValue = $(this).val();
+        if (inputValue === "") {
+            $(this).removeClass('filled');
+            $(this).parents('.form-group').removeClass('focused');
+        } else {
+            $(this).addClass('filled');
+        }
+    });
+
+
+    /************************************************
+     * Enables textareas to auto expand with user input
+     * .
+     * .
+     * Source: https://codepen.io/vsync/pen/frudD
+     *************************************************/
+
+    // Applied globally on all textareas with the "autoExpand" class
+    $(document)
+        .one('focus.autoExpand', 'textarea.autoExpand', function () {
+            let savedValue = this.value;
+            this.value = '';
+            this.baseScrollHeight = this.scrollHeight;
+            this.value = savedValue;
+        })
+        .on('input.autoExpand', 'textarea.autoExpand', function () {
+            let minRows = this.getAttribute('data-min-rows') | 0, rows;
+            this.rows = minRows;
+
+            /*I modified the original code switching from ceil to floor
+            * otherwise when inputting on the first line of text the bottom
+            * of the box jumps 2 rows instead of one. This is because the ciel
+            * function rounds of the result of the division. */
+            rows = Math.floor((this.scrollHeight - this.baseScrollHeight) / 16);
+            this.rows = minRows + rows;
+        });
+    /************************************************
+     * Form submission scripts. Sends an email using smtpjs.com api
+     * .
+     * .
+     * Source: https://stackoverflow.com/questions/45634088/how-to-prevent-page-from-reloading-after-form-submit-jquery/45634140
+     *************************************************/
+
+    // Listen to submit event on the <form> itself!
+    $('#contactForm').submit(function (e) {
+
+        /*Prevent the page from refreshing on form submit*/
+        e.preventDefault();
+
+        let name = $("#name").val();
+        let email = $("#email").val();
+
+        console.log("Name: " + name + "Email: " + email + "\n");
+
+    });
+
+
+    /************************************************
+     *
+     * .
+     * .
+     * Source:
+     *************************************************/
+    let $menu = $('#menu');
+
+    $('#menu-btn').click(function () {
+
+        if ($menu.hasClass('menu-closed')) {
+            $menu.removeClass('menu-closed');
+            $menu.addClass('menu-open');
+            console.log('here');
+        } else {
+            $menu.removeClass('menu-open');
+            $menu.addClass('menu-closed');
+            console.log('there');
+        }
+        console.log('clicked menu btn');
+    });
+
 }));

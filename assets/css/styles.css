@@ -39,6 +39,18 @@ body {
     justify-content: center; /*Consider: Using navbar div might be able to remove in future but depends if comps. get added to navbar*/
 }
 
+.section {
+    height: 100vh;
+}
+
+.section-header-text {
+    font-weight: normal;
+}
+
+.section-content {
+
+}
+
 #menu-btn > svg {
     height: inherit;
     fill:#ffffff;
@@ -47,6 +59,7 @@ body {
 #menu-btn {
     height: 1.719em;
     margin-right: 24px;
+    z-index: 10;
 }
 
 @media screen and (min-width: 600px) {
@@ -76,9 +89,9 @@ with JS when it reaches its scroll position */
 /*TODO: Clean up. Transition is work in progress*/
 .sticky > #site-name {
     left: 0;
-    -moz-transform: translateX(0);
-    -ms-transform: translateX(0);
-    -webkit-transform: translateX(0);
+    -moz-transform: translateX(24px);
+    -ms-transform: translateX(24px);
+    -webkit-transform: translateX(24px);
     transform: translateX(24px);
 }
 
@@ -86,6 +99,7 @@ with JS when it reaches its scroll position */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 10;
 }
 
 #site-name > h1{
@@ -103,10 +117,14 @@ with JS when it reaches its scroll position */
 /* Add some top padding to the page content to prevent
 sudden quick movement (as the header gets a new position at
 the top of the page (position:fixed and top:0) */
-.sticky + .content {
-    padding-top: 102px;
-}
+/*.sticky + .content {*/
+    /*padding-top: 102px;*//*TODO: Remove when working*/
+/*}*/
 
+
+
+/* Nav bar styles
+--------------------------------------------- */
 .navbar {
     height: 10vh;
     position: fixed;
@@ -117,6 +135,7 @@ the top of the page (position:fixed and top:0) */
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    z-index: 1000;
 }
 
 .navbar-item {
@@ -126,7 +145,7 @@ the top of the page (position:fixed and top:0) */
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
-#site-name {
+#site-name { /*TODO: Rename to header text or something*/
     color:white;
 
     /*Quadratic*/
@@ -135,6 +154,29 @@ the top of the page (position:fixed and top:0) */
     -webkit-transition: all 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
 }
 
+#menu {
+    top: 10vh;
+    position: absolute;
+    height: 40vh;
+    width: inherit;
+    background: inherit;
+    z-index: 5;
+    transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);;
+    -webkit-transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
+
+.menu-closed {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+.menu-open {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
+}
+
+/* Photo grid styles
+--------------------------------------------- */
 #photo-grid {
     /*Consider: background: rgba(49, 86, 75, 0.14); keep white for now*/
     display: flex;
@@ -171,13 +213,8 @@ the top of the page (position:fixed and top:0) */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/*#photo-grid > img {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        height: 100%;
-    width: 100%;
-    max-width: 100%;
-}*/
-
+/* Pricing section styles
+--------------------------------------------- */
 #pricing {
     height: 100vh;
     padding-top: 10vh;
@@ -189,16 +226,103 @@ the top of the page (position:fixed and top:0) */
     font-weight: 100;
 }
 
-/*#price-header-text > h1{*/
-    /*font-weight: 100;*/
-/*}*/
+/* Contact section styles
+--------------------------------------------- */
+#contact {
+    padding: 10vh 24px 0 24px;
+}
 
+#contact textarea {
+    overflow: hidden;
+    resize: none;
+    min-height: 35px;
+}
+
+/* Form styles
+ * Source: https://codepen.io/nathanlong/pen/kkLKrL -->
+--------------------------------------------- */
+.form-wrapper {
+    max-width: 30%;
+    min-width: 300px;
+    padding: 50px 30px 50px 30px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+.form-group {
+    position: relative;
+}
+.form-group + .form-group {
+    margin-top: 30px;
+}
+
+.form-label {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: #999;
+    background-color: #fff;
+    z-index: 10;
+    transition: font-size 150ms ease-out, -webkit-transform 150ms ease-out;
+    transition: transform 150ms ease-out, font-size 150ms ease-out;
+    transition: transform 150ms ease-out, font-size 150ms ease-out, -webkit-transform 150ms ease-out;
+}
+
+.focused .form-label {
+    -webkit-transform: translateY(-125%);
+    transform: translateY(-125%);
+    font-size: .75em;
+}
+
+.form-input {
+    position: relative;
+    padding: 12px 0px 5px 0;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    box-shadow: 0 1px 0 0 #e5e5e5;
+    transition: box-shadow 150ms ease-out;
+}
+.form-input:focus {
+    box-shadow: 0 1px 0 0 black;
+}
+
+.form-input.filled {
+    box-shadow: 0 1px 0 0 #1e3e1f;
+}
+
+.form-input textarea.filled {
+    height: 100vh;
+}
+
+.form-input:not(textarea){
+    width: 50%;
+}
+
+.form-submit {
+
+}
+
+/*Source: https://stackoverflow.com/questions/2338102/override-browser-form-filling-and-input-highlighting-with-html-css*/
+input:-webkit-autofill {
+    -webkit-box-shadow:  0 1px 0 0 #e5e5e5, 0 0 0 50px white inset !important; /* Change the color to your own background color */
+    -webkit-text-fill-color: #333;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 1px 0 0 black, 0 0 0 50px white inset !important;
+    -webkit-text-fill-color: #333;
+}
+
+/* Footer styles
+--------------------------------------------- */
 footer {
     background: rgba(231, 231, 231, 0.74);
     height: 50vh;
 }
 
-/*TODO: Remove when done*/
 /* Parallax base styles
 --------------------------------------------- */
 

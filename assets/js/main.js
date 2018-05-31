@@ -145,16 +145,13 @@
     let $menu = $('#menu');
 
     $('#menu-btn').click(function () {
+        $menu.toggleClass('menu-open');
 
-        if ($menu.hasClass('menu-closed')) {
-            $menu.removeClass('menu-closed');
-            $menu.addClass('menu-open');
-            console.log('here');
-        } else {
-            $menu.removeClass('menu-open');
-            $menu.addClass('menu-closed');
-            console.log('there');
-        }
+        /*There has to be a better way*/
+        $('#menu-icon-bar-0').toggleClass('menu-open');
+        $('#menu-icon-bar-1').toggleClass('menu-open');
+        $('#menu-icon-bar-2').toggleClass('menu-open');
+        $('#menu-icon-bar-3').toggleClass('menu-open');
         console.log('clicked menu btn');
     });
 

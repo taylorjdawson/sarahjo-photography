@@ -142,10 +142,11 @@
      * .
      * Source:
      *************************************************/
-    let $menu = $('#menu');
+    // let $menu = $('#menu');
 
     $('#menu-btn').click(function () {
-        $menu.toggleClass('menu-open');
+        // $menu.toggleClass('menu-open');
+        $('#navbar').toggleClass('menu-open');
 
         /*There has to be a better way*/
         $('#menu-icon-bar-0').toggleClass('menu-open');

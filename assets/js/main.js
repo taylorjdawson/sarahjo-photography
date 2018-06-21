@@ -26,26 +26,27 @@
      *************************************************/
     // When the user scrolls the page, execute myFunction
     window.onscroll = function () {
-        myFunction()
+        toggleNavBar()
     };
 
-    // Get the offset position of the navbar
-    // let sticky = navbar.offsetTop;
     let $header = $('#header');
     let $navbar = $('#navbar');
 
     // Add the sticky class to the header when you reach its scroll position. Remove "sticky"
     // when you leave the scroll position
-    function myFunction() {
-
-        let bottom = $header.offset().top + $header.outerHeight(true);
-        /*TODO: Switch to js if more efficient to get height in pure js .offsetHeight*/
-        if ((bottom - window.pageYOffset) < $navbar.outerHeight(true)) {
+    function toggleNavBar() {
+        if (!atPageTop()) {
             $navbar.addClass("sticky");
         }
         else {
             $navbar.removeClass("sticky");
         }
+    }
+
+    //TODO: Comment
+    function atPageTop() {
+        let bottom = $header.offset().top + $header.outerHeight(true);
+        return !((bottom - window.pageYOffset) < $navbar.outerHeight(true))
     }
 
     /************************************************
@@ -197,11 +198,24 @@
      * .
      * Source:
      *************************************************/
-    // let $menu = $('#menu');
+
 
     $('#menu-btn').click(function () {
         // $menu.toggleClass('menu-open');
-        $('#navbar').toggleClass('menu-open');
+        $navbar.toggleClass('menu-open');
+
+        // Check to see if the sticky-nav has been toggled
+        if (atPageTop() && !$navbar.hasClass("sticky")) {
+            $navbar.addClass("sticky");
+            console.log("at page top so adding sticky")
+        }
+        else if (atPageTop() && $navbar.hasClass("sticky"))
+        {
+            $navbar.removeClass("sticky");
+            console.log("at page top and menu must be open because it has class sticky")
+        }
+
+        //$('#navbar-items').toggleClass('menu-open');
 
         /*There has to be a better way*/
         $('#menu-icon-bar-0').toggleClass('menu-open');

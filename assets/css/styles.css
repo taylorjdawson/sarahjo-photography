@@ -146,17 +146,14 @@ the top of the page (position:fixed and top:0) */
 .navbar {
     -webkit-clip-path: polygon(0 0, 100% 0%, 100% 20%, 0 20%);
     clip-path:  polygon(0 0, 100% 0%, 100% 20%, 0 20%);
-
     height: inherit;
     position: inherit;
     width: inherit;
     text-align: center;
-    transition: opacity 1s; /*TODO: MAKE SURE WORKS*/
     font-family: 'Sacramento', cursive;
-
     z-index: 1000;
-    transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
-    -webkit-transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -webkit-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
 }
 
 .navbar-item {
@@ -216,8 +213,12 @@ the top of the page (position:fixed and top:0) */
     opacity: 0;
 }
 
-.menu-open[id='menu-icon-bar-3']  {
+.menu-open[id='menu-icon-bar-3'] {
     opacity: 0;
+}
+
+.meun-open[id='navbar-items']{
+
 }
 
 #menu-icon {

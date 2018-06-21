@@ -115,10 +115,35 @@
             rows = Math.floor((this.scrollHeight - this.baseScrollHeight) / 16);
             this.rows = minRows + rows;
         });
+
+    /************************************************
+     * Functions to launch and close a modal
+     * .
+     * .
+     * Source: https://stackoverflow.com/questions/45634088/how-to-prevent-page-from-reloading-after-form-submit-jquery/45634140
+     *************************************************/
+    function launchModal() {
+        $('body').toggleClass('disable-scroll');
+        $('.modal').attr("aria-hidden","false")
+
+        /* Reveal popup */
+    }
+
+    function closeModal() {
+        $('body').toggleClass('disable-scroll');
+        $('.modal').attr("aria-hidden","true")
+    }
+
+
+    $('#dialog-btn').click(function () {
+        $('body').toggleClass('disable-scroll');
+        $('.modal').attr("aria-hidden","true")
+    });
+
     /************************************************
      * Form submission scripts. Sends an email using smtpjs.com api
      * .
-     * .
+     * .TODO: Shorten the link
      * Source: https://stackoverflow.com/questions/45634088/how-to-prevent-page-from-reloading-after-form-submit-jquery/45634140
      *************************************************/
 
@@ -128,12 +153,42 @@
         /*Prevent the page from refreshing on form submit*/
         e.preventDefault();
 
-        let name = $("#name").val();
-        let email = $("#email").val();
+        const to_email = "taylor@dawson.im";
+        const smpt_token = "98156325-63be-4e23-ad2c-84c60b42b54a";
 
-        console.log("Name: " + name + "Email: " + email + "\n");
+        let inquirers_name = $("#name").val();
+        // let inquirers_number = $("#number").val();
+
+        let from_email = $("#email").val();
+        let subject = $('#subject').val();
+        let message = $('#message').val();
+
+        /*Verify that email is valid before continuing*/
+
+        /*If the user's email is invalid. Inform the user.*/
+            /*If the user thinks that they received the invalid email message in error,
+            have the user try again. If it fails a second time then send the email with a default email and
+            include the seeming invalid email in the body. In addition send the email to the server admin for
+            further diagnosis on why the error occurred. */
+
+        /*Otherwise go on to launch verification modal*/
+
+        /*Launch verification model before sending*/
+        launchModal();
+
+        /*If user gives consents to sending email then send away*/
+
+        /*Otherwise close modal and don't send nothing*/
+
+        // Email.send(from_email,
+        //     to_email,
+        //     subject, /* CONSIDER: This being the type of picture wanted (maybe)*/
+        //     `Name: ${inquirers_name} \n Message: \n ${message}`,
+        //     {token:smpt_token});
 
     });
+
+
 
 
     /************************************************

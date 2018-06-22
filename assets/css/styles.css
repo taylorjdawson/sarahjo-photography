@@ -144,8 +144,8 @@ the top of the page (position:fixed and top:0) */
 }
 
 .navbar {
-    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 20%, 0 20%);
     clip-path:  polygon(0 0, 100% 0%, 100% 20%, 0 20%);
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 20%, 0 20%);
     height: inherit;
     position: inherit;
     width: inherit;
@@ -156,14 +156,21 @@ the top of the page (position:fixed and top:0) */
     -webkit-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
 }
 
-.navbar-item {
+.navbar-items {
     position: absolute;
     right: 24px;
     top: 20%;
     font-family: 'Work Sans', sans-serif;
+    opacity: 0;
+    transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -webkit-transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
 }
 
-.navbar-item > a {
+.menu-open[id='navbar-items'] {
+    opacity: 100;
+}
+
+.navbar-items > a {
     text-decoration: none;
     color: black;
 }
@@ -289,14 +296,14 @@ bar 1 rotate(-135deg) translate(32px, 0px) rotateX(-180deg);
 
 /* Pricing section styles
 --------------------------------------------- */
-#pricing {
+#rates {
     height: 100vh;
     padding-top: 10vh;
     padding-left: 24px;
     font-weight: 100;
 }
 
-#pricing > div > h1, h3 {
+#rates > div > h1, h3 {
     font-weight: 100;
 }
 

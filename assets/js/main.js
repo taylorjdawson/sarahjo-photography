@@ -177,7 +177,7 @@
         /*Launch verification model before sending*/
         launchModal();
 
-        /*If user gives consents to sending email then send away*/
+        /*If user gives consent to sending email then send away*/
 
         /*Otherwise close modal and don't send nothing*/
 
@@ -193,36 +193,42 @@
 
 
     /************************************************
-     *
+     * TODO: Fill in
      * .
      * .
      * Source:
      *************************************************/
-
-
     $('#menu-btn').click(function () {
-        // $menu.toggleClass('menu-open');
-        $navbar.toggleClass('menu-open');
-
+        toggleMenu();
         // Check to see if the sticky-nav has been toggled
         if (atPageTop() && !$navbar.hasClass("sticky")) {
             $navbar.addClass("sticky");
-            console.log("at page top so adding sticky")
         }
         else if (atPageTop() && $navbar.hasClass("sticky"))
         {
             $navbar.removeClass("sticky");
-            console.log("at page top and menu must be open because it has class sticky")
         }
+    });
 
-        //$('#navbar-items').toggleClass('menu-open');
+    $('.navbar-item').click(function () {
+        toggleMenu();
+    });
+
+    /************************************************
+     * Function to toggle the menu
+     * .
+     * .
+     * Source:
+     *************************************************/
+    let toggleMenu = function () {
+        $navbar.toggleClass('menu-open');
+        $('#navbar-items').toggleClass('menu-open');
 
         /*There has to be a better way*/
         $('#menu-icon-bar-0').toggleClass('menu-open');
         $('#menu-icon-bar-1').toggleClass('menu-open');
         $('#menu-icon-bar-2').toggleClass('menu-open');
         $('#menu-icon-bar-3').toggleClass('menu-open');
-        console.log('clicked menu btn');
-    });
+    }
 
 }));

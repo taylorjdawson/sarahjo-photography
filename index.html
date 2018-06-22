@@ -22,13 +22,10 @@
 <body>
 <!--Header-->
 
-<!--Fosted glass: -->
+<!--CONSIDER: Frosted glass: -->
 <div id='header' class='header'>
     <div id="navtainer">
         <div id='navbar' class='navbar'>
-
-            <!--CONSIDER: Header text outside of navbar. navitems in head if need be-->
-
             <div id='site-name'>
                 <h1>Sarah Jo</h1>
             </div>
@@ -140,16 +137,17 @@
                         </g>
                     </g>
                 </svg></div>
-            <!--TODO: Uncomment and put inside flex-tainer-->
+            <!--TODO:????? Uncomment and put inside flex-tainer-->
 
-            <div id="navbar-items" class='navbar-item'>
-                <a href="#">About</a>
+            <div id="navbar-items" class='navbar-items'> <!--TODO: Remove dup id class (pick one)-->
+                <a class="navbar-item" href="#">Home</a>
+                <a class="navbar-item" href="#photo-grid">Photos</a>
+                <a class="navbar-item" href="#">About</a>
+                <a class="navbar-item" href="#rates">Rates</a>
+                <a class="navbar-item" href="#contact">Inquire</a> <!--TODO: Possibly rename id to match?-->
             </div>
         </div>
     </div>
-
-
-
 </div>
 
 <!--Photos Section-->
@@ -184,7 +182,7 @@
 </div>
 
 <!--Pricing Section-->
-<div id='pricing' hidden style='visibility: hidden;'>
+<div id='rates' hidden style='visibility: hidden;'>
 
     <!--Price header-->
     <div>

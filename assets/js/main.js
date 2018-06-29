@@ -19,6 +19,11 @@
 
     console.log('The DOM may not be ready');
 
+    /*
+    * TODO:
+    * TODO: RE ORGANIZE FILE
+    * TODO:
+    * */
 
     /************************************************
      * Sticky navigation bar scripts
@@ -34,20 +39,42 @@
 
     // Add the sticky class to the header when you reach its scroll position. Remove "sticky"
     // when you leave the scroll position
-    function toggleNavBar() {
+    function toggleNavBar() { // TODO: Possibly make more efficient
         if (!atPageTop()) {
             $navbar.addClass("sticky");
         }
-        else {
+        else if (!Menu.isToggled) {
             $navbar.removeClass("sticky");
         }
     }
 
     //TODO: Comment
-    function atPageTop() {
+    function atPageTop() { // TODO: Arrow?
         let bottom = $header.offset().top + $header.outerHeight(true);
         return !((bottom - window.pageYOffset) < $navbar.outerHeight(true))
     }
+
+    /************************************************
+     * Simple menu manager object
+     * Source: https://codepen.io/nathanlong/pen/kkLKrL
+     *************************************************/
+    let Menu = {
+        isToggled: false,
+
+        toggleMenu() {
+
+            this.isToggled = !this.isToggled;
+
+            $navbar.toggleClass('menu-open');
+            $('#navbar-items').toggleClass('menu-open');
+
+            /*There has to be a better way*/
+            $('#menu-icon-bar-0').toggleClass('menu-open');
+            $('#menu-icon-bar-1').toggleClass('menu-open');
+            $('#menu-icon-bar-2').toggleClass('menu-open');
+            $('#menu-icon-bar-3').toggleClass('menu-open');
+        }
+    };
 
     /************************************************
      * Contact section form scripts
@@ -58,14 +85,10 @@
      * .
      * Source: https://codepen.io/nathanlong/pen/kkLKrL
      *************************************************/
-    let $input = $('input');
-    let $textarea = $('#message');
+    let $input = $('.form-input');
+    let $message = $('#message');
 
     $input.focus(function () {
-        $(this).parents('.form-group').addClass('focused');
-    });
-
-    $textarea.focus(function () {
         $(this).parents('.form-group').addClass('focused');
     });
 
@@ -76,16 +99,7 @@
             $(this).parents('.form-group').removeClass('focused');
         } else {
             $(this).addClass('filled');
-        }
-    });
-
-    $textarea.blur(function () {
-        let inputValue = $(this).val();
-        if (inputValue === "") {
-            $(this).removeClass('filled');
-            $(this).parents('.form-group').removeClass('focused');
-        } else {
-            $(this).addClass('filled');
+            $(this).parent().removeClass('form-invalid');
         }
     });
 
@@ -125,20 +139,20 @@
      *************************************************/
     function launchModal() {
         $('body').toggleClass('disable-scroll');
-        $('.modal').attr("aria-hidden","false")
+        $('.modal').attr("aria-hidden", "false")
 
         /* Reveal popup */
     }
 
     function closeModal() {
         $('body').toggleClass('disable-scroll');
-        $('.modal').attr("aria-hidden","true")
+        $('.modal').attr("aria-hidden", "true")
     }
 
 
     $('#dialog-btn').click(function () {
         $('body').toggleClass('disable-scroll');
-        $('.modal').attr("aria-hidden","true")
+        $('.modal').attr("aria-hidden", "true")
     });
 
     /************************************************
@@ -148,34 +162,69 @@
      * Source: https://stackoverflow.com/questions/45634088/how-to-prevent-page-from-reloading-after-form-submit-jquery/45634140
      *************************************************/
 
+
+
+        // References to form entries
+    let $name = $('#name');
+    let $email = $('#email');
+    let $subject = $('#subject');
+
     // Listen to submit event on the <form> itself!
     $('#contactForm').submit(function (e) {
+
+        let validForm = true;
 
         /*Prevent the page from refreshing on form submit*/
         e.preventDefault();
 
-        const to_email = "taylor@dawson.im";
+        const RECEIVER_EMAIL = "taylor@dawson.im";
         const smpt_token = "98156325-63be-4e23-ad2c-84c60b42b54a";
 
-        let inquirers_name = $("#name").val();
         // let inquirers_number = $("#number").val();
 
-        let from_email = $("#email").val();
-        let subject = $('#subject').val();
-        let message = $('#message').val();
+        /* Validate the in form data */
+        $('.form-input').each(function (index, input_element) {
+                let input_text = $(input_element).val();
+                if (input_text === "") {
+                    $(input_element).parent().addClass('form-invalid');
+                    validForm = false;
+                }
+            }
+        );
+
+        if (validForm) {
+
+            /* Reset the form */
+
+            // Email.send(from_email,
+            //     RECEIVER_EMAIL,
+            //     subject, /* CONSIDER: This being the type of picture wanted (maybe)*/
+            //     `Name: ${inquirers_name} \n Message: \n ${message}`,
+            //     {token:smpt_token});
+
+            console.log("sending email on valid form")
+        }
+        else {
+            console.log("invalid form")
+        }
+        // CONSIDER: Might not need these or the ones above
+        let inquirers_name = $name.val();
+        let from_email = $email.val();
+        let subject = $subject.val();
+        let message = $message.val();
 
         /*Verify that email is valid before continuing*/
 
         /*If the user's email is invalid. Inform the user.*/
-            /*If the user thinks that they received the invalid email message in error,
-            have the user try again. If it fails a second time then send the email with a default email and
-            include the seeming invalid email in the body. In addition send the email to the server admin for
-            further diagnosis on why the error occurred. */
+        /*If the user thinks that they received the invalid email message in error,
+        have the user try again. If it fails a second time then send the email with a default email and
+        include the seeming invalid email in the body. In addition send the email to the server admin for
+        further diagnosis on why the error occurred. */
 
         /*Otherwise go on to launch verification modal*/
 
         /*Launch verification model before sending*/
-        launchModal();
+
 
         /*If user gives consent to sending email then send away*/
 
@@ -190,8 +239,6 @@
     });
 
 
-
-
     /************************************************
      * TODO: Fill in
      * .
@@ -199,19 +246,19 @@
      * Source:
      *************************************************/
     $('#menu-btn').click(function () {
-        toggleMenu();
+        Menu.toggleMenu();
         // Check to see if the sticky-nav has been toggled
         if (atPageTop() && !$navbar.hasClass("sticky")) {
             $navbar.addClass("sticky");
         }
-        else if (atPageTop() && $navbar.hasClass("sticky"))
-        {
+        else if (atPageTop() && $navbar.hasClass("sticky")) {
             $navbar.removeClass("sticky");
         }
+        console.log(Menu.isToggled);
     });
 
     $('.navbar-item').click(function () {
-        toggleMenu();
+        Menu.toggleMenu();
     });
 
     /************************************************
@@ -220,15 +267,15 @@
      * .
      * Source:
      *************************************************/
-    let toggleMenu = function () {
+    /*let toggleMenu = function () {
         $navbar.toggleClass('menu-open');
         $('#navbar-items').toggleClass('menu-open');
 
-        /*There has to be a better way*/
+        /*There has to be a better way
         $('#menu-icon-bar-0').toggleClass('menu-open');
         $('#menu-icon-bar-1').toggleClass('menu-open');
         $('#menu-icon-bar-2').toggleClass('menu-open');
         $('#menu-icon-bar-3').toggleClass('menu-open');
-    }
+    }*/
 
 }));

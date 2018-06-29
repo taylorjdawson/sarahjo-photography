@@ -159,6 +159,7 @@ the top of the page (position:fixed and top:0) */
 .navbar-items {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     position: absolute;
     right: 24px;
     top: 20%;
@@ -175,7 +176,7 @@ the top of the page (position:fixed and top:0) */
 .navbar-items > a {
     text-decoration: none;
     color: black;
-
+    padding: 5px;
 }
 
 #menu {
@@ -385,6 +386,19 @@ bar 1 rotate(-135deg) translate(32px, 0px) rotateX(-180deg);
     width: 50%;
 }
 
+.form-invalid > .form-label {
+    color: #de6868;
+}
+
+.form-invalid > .form-input {
+    box-shadow: 0 1px 0 0 #de6868;
+}
+
+/*CONSIDER: a better way?*/
+/*.form-invalid > textarea {
+    box-shadow: 0 1px 0 0 #de6868;
+}*/
+
 .form-submit {
     border: none;
     background: none;
@@ -398,6 +412,8 @@ bar 1 rotate(-135deg) translate(32px, 0px) rotateX(-180deg);
 }
 
 /*Source: https://stackoverflow.com/questions/2338102/override-browser-form-filling-and-input-highlighting-with-html-css*/
+
+/*Removes the yellow highlight on chrome's auto-fill*/
 input:-webkit-autofill {
     -webkit-box-shadow:  0 1px 0 0 #e5e5e5, 0 0 0 50px white inset !important;
     -webkit-text-fill-color: #333;
@@ -410,14 +426,20 @@ input:-webkit-autofill:focus {
 
 /* Modal styles
 --------------------------------------------- */
-
 .modal {
 
 }
 
+.dialog-contents {
+
+}
+
+.dialog-btns {
+
+}
+
 .dialog-btn {
-    width: 80px;
-    height: 60px;
+
 }
 
 /*TODO: add transition of sorts */
@@ -446,6 +468,8 @@ input:-webkit-autofill:focus {
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 5px 5px 7px 2px #828282d9;
+    bottom: 10px;
+    right: 10px;
 }
 
 /* Per specs -- https://github.com/pstonier/accessibility-guidelines#aria-hidden-state */

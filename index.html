@@ -244,7 +244,7 @@
             <textarea id='message' class='form-input autoExpand' rows='1' data-min-rows='1'></textarea>
         </div>
         <div class='form-group'>
-            <input id="submitButton" type='submit' class='form-submit' value="Submit"/>
+            <input id="submitButton" type='submit' class='form-submit' value="Send"/>
         </div>
     </form>
 </div>
@@ -252,8 +252,15 @@
 <!--Modal-->
 <div class="modal overlay" aria-hidden="true">
     <div class="dialog-box">
-        <button id="yes-dialog-btn" class="dialog-btn">Yes</button>
-        <button id="no-dialog-btn" class="dialog-btn">No</button>
+        <div class="dialog-contents">
+            <p>
+                Would you like to send Sarah a message from the email you provided?
+            </p>
+        </div>
+        <div class="dialog-btns">
+            <button id="yes-dialog-btn" class="dialog-btn">Yes</button>
+            <button id="no-dialog-btn" class="dialog-btn">No</button>
+        </div>
     </div>
 </div>
 

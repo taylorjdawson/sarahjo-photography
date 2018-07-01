@@ -26,6 +26,57 @@
     * */
 
     /************************************************
+     * Simple menu manager object
+     *
+     *************************************************/
+
+    function Navbar($navBar) {
+
+        this.$navBar = $navBar;
+        this.navBarIsSticky = false;
+        this.menuIsOpen = false;
+
+        /* Function to toggle the menu */
+        this.toggleMenu = function () {
+
+            this.menuIsOpen = !this.menuIsOpen;
+
+            if (atPageTop()) {
+                this.toggleSticky();
+            }
+
+            this.$navBar.toggleClass('menu-open');
+
+            $('#navbar-items').toggleClass('menu-open');
+
+            /*There has to be a better way*/
+            $('#menu-icon-bar-0').toggleClass('menu-open');
+            $('#menu-icon-bar-1').toggleClass('menu-open');
+            $('#menu-icon-bar-2').toggleClass('menu-open');
+            $('#menu-icon-bar-3').toggleClass('menu-open');
+        };
+
+        this.toggleSticky = function () {
+            this.$navBar.toggleClass("sticky");
+            this.navBarIsSticky = !this.navBarIsSticky;
+        };
+
+        this.stick = function () {
+            this.$navBar.addClass("sticky");
+            this.navBarIsSticky = true;
+        };
+
+        this.unstick = function () {
+            this.$navBar.removeClass("sticky");
+            this.navBarIsSticky = false;
+        }
+    }
+
+    //Instantiate our navbar object instance
+    let navBar = new Navbar($('#navbar'));
+
+
+    /************************************************
      * Sticky navigation bar scripts
      * Source: https://codepen.io/nathanlong/pen/kkLKrL
      *************************************************/
@@ -35,46 +86,31 @@
     };
 
     let $header = $('#header');
-    let $navbar = $('#navbar');
 
     // Add the sticky class to the header when you reach its scroll position. Remove "sticky"
     // when you leave the scroll position
     function toggleNavBar() { // TODO: Possibly make more efficient
         if (!atPageTop()) {
-            $navbar.addClass("sticky");
+            navBar.stick();
         }
-        else if (!Menu.isToggled) {
-            $navbar.removeClass("sticky");
+        else if (!navBar.menuIsOpen) {
+            navBar.unstick();
         }
     }
 
     //TODO: Comment
     function atPageTop() { // TODO: Arrow?
         let bottom = $header.offset().top + $header.outerHeight(true);
-        return !((bottom - window.pageYOffset) < $navbar.outerHeight(true))
+        return !((bottom - window.pageYOffset) < navBar.$navBar.outerHeight(true))
     }
 
     /************************************************
-     * Simple menu manager object
-     * Source: https://codepen.io/nathanlong/pen/kkLKrL
+     * Smooth scroll
      *************************************************/
-    let Menu = {
-        isToggled: false,
 
-        toggleMenu() {
 
-            this.isToggled = !this.isToggled;
 
-            $navbar.toggleClass('menu-open');
-            $('#navbar-items').toggleClass('menu-open');
 
-            /*There has to be a better way*/
-            $('#menu-icon-bar-0').toggleClass('menu-open');
-            $('#menu-icon-bar-1').toggleClass('menu-open');
-            $('#menu-icon-bar-2').toggleClass('menu-open');
-            $('#menu-icon-bar-3').toggleClass('menu-open');
-        }
-    };
 
     /************************************************
      * Contact section form scripts
@@ -246,19 +282,10 @@
      * Source:
      *************************************************/
     $('#menu-btn').click(function () {
-        Menu.toggleMenu();
-        // Check to see if the sticky-nav has been toggled
-        if (atPageTop() && !$navbar.hasClass("sticky")) {
-            $navbar.addClass("sticky");
-        }
-        else if (atPageTop() && $navbar.hasClass("sticky")) {
-            $navbar.removeClass("sticky");
-        }
-        console.log(Menu.isToggled);
+        navBar.toggleMenu();
     });
-
     $('.navbar-item').click(function () {
-        Menu.toggleMenu();
+        navBar.toggleMenu();
     });
 
     /************************************************
@@ -267,15 +294,6 @@
      * .
      * Source:
      *************************************************/
-    /*let toggleMenu = function () {
-        $navbar.toggleClass('menu-open');
-        $('#navbar-items').toggleClass('menu-open');
 
-        /*There has to be a better way
-        $('#menu-icon-bar-0').toggleClass('menu-open');
-        $('#menu-icon-bar-1').toggleClass('menu-open');
-        $('#menu-icon-bar-2').toggleClass('menu-open');
-        $('#menu-icon-bar-3').toggleClass('menu-open');
-    }*/
 
 }));

@@ -26,13 +26,13 @@ body {
             requires figuring out how to control where the image starts (might just need to edit)
     */
     background-attachment: fixed;
-/*    background-position-y: 18%;*/
+    /*    background-position-y: 18%;*/
     background-position-x: center;
     background-size: cover;
     background-image: url("../images/benjamin-combs-27619-unsplash.jpg");
     height: 40vh;
-    width:100%;
-    display:flex; /*TODO: Might be able to remove*/
+    width: 100%;
+    display: flex; /*TODO: Might be able to remove*/
     /*align-items: center;*/
     justify-content: center; /*Consider: Using navbar div might be able to remove in future but depends if comps. get added to navbar*/
 }
@@ -51,7 +51,7 @@ body {
 
 #menu-btn > svg {
     height: inherit;
-    fill:#ffffff;
+    fill: #ffffff;
 }
 
 #menu-btn {
@@ -84,7 +84,7 @@ with JS when it reaches its scroll position */
 }
 
 .sticky > #menu-btn > svg {
-    fill:#000000;
+    fill: #000000;
 }
 
 /*TODO: Clean up. Transition is work in progress*/
@@ -102,7 +102,7 @@ with JS when it reaches its scroll position */
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
-    color:white;
+    color: white;
 
     /*Quadratic*/
     -moz-transition: all 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
@@ -110,14 +110,13 @@ with JS when it reaches its scroll position */
     -webkit-transition: all 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
 }
 
-#site-name > h1{
+#site-name > h1 {
     font-size: 1.5em;
 }
 
-
 /*TODO: Evaluate this to see if it is the best size*/
 @media screen and (min-width: 600px) {
-    #site-name > h1{
+    #site-name > h1 {
         font-size: 2em;
     }
 }
@@ -126,10 +125,8 @@ with JS when it reaches its scroll position */
 sudden quick movement (as the header gets a new position at
 the top of the page (position:fixed and top:0) */
 /*.sticky + .content {*/
-    /*padding-top: 102px;*//*TODO: Remove when working*/
+/*padding-top: 102px;*//*TODO: Remove when working*/
 /*}*/
-
-
 
 /* Nav bar styles
 --------------------------------------------- */
@@ -144,7 +141,7 @@ the top of the page (position:fixed and top:0) */
 }
 
 .navbar {
-    clip-path:  polygon(0 0, 100% 0%, 100% 20%, 0 20%);
+    clip-path: polygon(0 0, 100% 0%, 100% 20%, 0 20%);
     -webkit-clip-path: polygon(0 0, 100% 0%, 100% 20%, 0 20%);
     height: inherit;
     position: inherit;
@@ -152,8 +149,14 @@ the top of the page (position:fixed and top:0) */
     text-align: center;
     font-family: 'Sacramento', cursive;
     z-index: 1000;
-    transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
     -webkit-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -moz-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -ms-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -o-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
+    will-change: clip-path;
 }
 
 .navbar-items {
@@ -165,8 +168,13 @@ the top of the page (position:fixed and top:0) */
     top: 20%;
     font-family: 'Work Sans', sans-serif;
     opacity: 0;
-    transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
     -webkit-transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -moz-transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -ms-transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -o-transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
 }
 
 .menu-open[id='navbar-items'] {
@@ -186,8 +194,14 @@ the top of the page (position:fixed and top:0) */
     width: inherit;
     background: inherit;
     z-index: 5;
-    transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);;
+
     -webkit-transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -moz-transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -ms-transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -o-transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
+    will-change: transform;
 }
 
 .menu-closed[id='menu'] {
@@ -203,6 +217,7 @@ the top of the page (position:fixed and top:0) */
 .menu-open[id='navbar'] {
     -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 20%);
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 20%);
+
 }
 
 .menu-open[id='menu-icon-bar-0'] {
@@ -220,6 +235,7 @@ the top of the page (position:fixed and top:0) */
     -o-transform: rotate(-135deg) translate(32px, 0px) rotateX(-180deg);;
     transform: rotate(-135deg) translate(32px, 0px) rotateX(-180deg);;
 }
+
 .menu-open[id='menu-icon-bar-2'] {
     opacity: 0;
 }
@@ -228,7 +244,7 @@ the top of the page (position:fixed and top:0) */
     opacity: 0;
 }
 
-.menu-open[id='navbar-items']{
+.menu-open[id='navbar-items'] {
 
 }
 
@@ -237,18 +253,31 @@ the top of the page (position:fixed and top:0) */
 }
 
 .menu-icon-bar {
-    transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96),
-    opacity 1s cubic-bezier(0.82, 0.03, 0.2, 1); ;
+    -webkit-transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96), opacity 1s cubic-bezier(0.82, 0.03, 0.2, 1);
+    -moz-transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96), opacity 1s cubic-bezier(0.82, 0.03, 0.2, 1);
+    -ms-transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96), opacity 1s cubic-bezier(0.82, 0.03, 0.2, 1);
+    -o-transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96), opacity 1s cubic-bezier(0.82, 0.03, 0.2, 1);
+    transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96), opacity 1s cubic-bezier(0.82, 0.03, 0.2, 1);
+
+    will-change: transform;
 }
 
 /*The origin of each menu bar was calculated by hand, that is where these number come from.
 see: (TODO: insert link to post here)
 */
 #menu-icon-bar-0 {
+    -webkit-transform-origin: 195px 305px;
+    -moz-transform-origin: 195px 305px;
+    -ms-transform-origin: 195px 305px;
+    -o-transform-origin: 195px 305px;
     transform-origin: 195px 305px;
 }
 
 #menu-icon-bar-1 {
+    -webkit-transform-origin: 209.95px 334.98px;
+    -moz-transform-origin: 209.95px 334.98px;
+    -ms-transform-origin: 209.95px 334.98px;
+    -o-transform-origin: 209.95px 334.98px;
     transform-origin: 209.95px 334.98px;
 }
 
@@ -339,6 +368,7 @@ bar 1 rotate(-135deg) translate(32px, 0px) rotateX(-180deg);
 .form-group {
     position: relative;
 }
+
 .form-group + .form-group {
     margin-top: 30px;
 }
@@ -370,6 +400,7 @@ bar 1 rotate(-135deg) translate(32px, 0px) rotateX(-180deg);
     box-shadow: 0 1px 0 0 #e5e5e5;
     transition: box-shadow 150ms ease-out;
 }
+
 .form-input:focus {
     box-shadow: 0 1px 0 0 black;
 }
@@ -382,7 +413,7 @@ bar 1 rotate(-135deg) translate(32px, 0px) rotateX(-180deg);
     height: 100vh;
 }
 
-.form-input:not(textarea){
+.form-input:not(textarea) {
     width: 50%;
 }
 
@@ -415,7 +446,7 @@ bar 1 rotate(-135deg) translate(32px, 0px) rotateX(-180deg);
 
 /*Removes the yellow highlight on chrome's auto-fill*/
 input:-webkit-autofill {
-    -webkit-box-shadow:  0 1px 0 0 #e5e5e5, 0 0 0 50px white inset !important;
+    -webkit-box-shadow: 0 1px 0 0 #e5e5e5, 0 0 0 50px white inset !important;
     -webkit-text-fill-color: #333;
 }
 
@@ -473,8 +504,7 @@ input:-webkit-autofill:focus {
 }
 
 /* Per specs -- https://github.com/pstonier/accessibility-guidelines#aria-hidden-state */
-[aria-hidden="true"]
-{
+[aria-hidden="true"] {
     visibility: hidden;
     opacity: 0;
 }

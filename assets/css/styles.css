@@ -92,10 +92,10 @@ with JS when it reaches its scroll position */
     /*left: 0;*/
 
     /*TODO: Anywhere transform is used add these 3 fall back transforms to them*/
-    -moz-transform: translateX(calc(24px - 50vw));
-    -ms-transform: translateX(calc(24px - 50vw));
-    -webkit-transform: translateX(calc(24px - 50vw));
-    transform: translateX(calc(24px - 50vw));
+    -moz-transform: translate3d(calc(24px - 50vw), 0, 0);
+    -ms-transform: translate3d(calc(24px - 50vw), 0, 0);
+    -webkit-transform: translate3d(calc(24px - 50vw), 0, 0);
+    transform: translate3d(calc(24px - 50vw), 0, 0);
 }
 
 #site-name { /*TODO: Refactor to header text or something*/

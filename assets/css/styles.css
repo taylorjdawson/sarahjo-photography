@@ -74,9 +74,9 @@ with JS when it reaches its scroll position */
 .sticky {
     position: fixed;
     top: 0;
-    background: rgba(255, 255, 255, 0.95);
+    opacity: 100 !important;
     color: black;
-    box-shadow: 0px 4px 9px 2px #8e8e8e9c;
+    /*box-shadow: 0px 4px 9px 2px #8e8e8e9c;*/
 }
 
 .sticky > div > h1 {
@@ -99,11 +99,15 @@ with JS when it reaches its scroll position */
 }
 
 #site-name { /*TODO: Refactor to header text or something*/
+
+    will-change: transform;
+
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
     color: white;
+
 
     /*Quadratic*/
     -webkit-transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
@@ -112,7 +116,7 @@ with JS when it reaches its scroll position */
     -o-transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
 
-    will-change: transform;
+
 }
 
 #site-name > h1 {
@@ -155,13 +159,16 @@ the top of the page (position:fixed and top:0) */
     font-family: 'Sacramento', cursive;
     z-index: 1000;
 
-    -webkit-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    background: rgba(255, 255, 255, 0.95);
+    opacity: 0;
+
+/*    -webkit-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     -moz-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     -ms-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     -o-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
 
-    will-change: clip-path;
+    will-change: clip-path;*/
 }
 
 .navbar-items {
@@ -174,11 +181,11 @@ the top of the page (position:fixed and top:0) */
     font-family: 'Work Sans', sans-serif;
     opacity: 0;
 
-    -webkit-transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+/*    -webkit-transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     -moz-transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     -ms-transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     -o-transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
-    transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    transition: opacity .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);*/
 
 }
 
@@ -199,8 +206,8 @@ the top of the page (position:fixed and top:0) */
     width: inherit;
     background: inherit;
     z-index: 5;
-
-    -webkit-transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+} /*Delete this when uncommented */
+/*    -webkit-transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     -moz-transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     -ms-transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     -o-transition: clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
@@ -266,6 +273,7 @@ the top of the page (position:fixed and top:0) */
 
     will-change: transform;
 }
+*/
 
 /*The origin of each menu bar was calculated by hand, that is where these number come from.
 see: (TODO: insert link to post here)

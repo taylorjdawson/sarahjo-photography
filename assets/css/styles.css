@@ -89,12 +89,13 @@ with JS when it reaches its scroll position */
 
 /*TODO: Clean up. Transition is work in progress*/
 .sticky > #site-name {
-    left: 0;
+    /*left: 0;*/
+
     /*TODO: Anywhere transform is used add these 3 fall back transforms to them*/
-    -moz-transform: translateX(24px);
-    -ms-transform: translateX(24px);
-    -webkit-transform: translateX(24px);
-    transform: translateX(24px);
+    -moz-transform: translateX(calc(24px - 50vw));
+    -ms-transform: translateX(calc(24px - 50vw));
+    -webkit-transform: translateX(calc(24px - 50vw));
+    transform: translateX(calc(24px - 50vw));
 }
 
 #site-name { /*TODO: Refactor to header text or something*/
@@ -105,9 +106,13 @@ with JS when it reaches its scroll position */
     color: white;
 
     /*Quadratic*/
-    -moz-transition: all 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
-    -o-transition: all 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
-    -webkit-transition: all 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -webkit-transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -moz-transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -ms-transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -o-transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
+    will-change: transform;
 }
 
 #site-name > h1 {

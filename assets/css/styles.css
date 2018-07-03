@@ -75,16 +75,16 @@ with JS when it reaches its scroll position */
     position: fixed;
     top: 0;
     opacity: 100 !important;
-    color: black;
+    /*color: black;*/
     /*box-shadow: 0px 4px 9px 2px #8e8e8e9c;*/
 }
 
 .sticky > div > h1 {
-    color: #000;
+   /* color: #000;*/
 }
 
 .sticky > #menu-btn > svg {
-    fill: #000000;
+    /*fill: #000000;*/
 }
 
 /*TODO: Clean up. Transition is work in progress*/
@@ -149,7 +149,7 @@ the top of the page (position:fixed and top:0) */
     height: 40vh;
     position: fixed;
     width: 100%;
-    filter: drop-shadow(0px 6px 14px #8e8e8e9c);
+    /*filter: drop-shadow(0px 6px 14px #8e8e8e9c);*/
     z-index: 500;
 }
 
@@ -163,8 +163,8 @@ the top of the page (position:fixed and top:0) */
     font-family: 'Sacramento', cursive;
     z-index: 1000;
 
-    background: rgba(255, 255, 255, 0.95);
-    opacity: 0;
+    /*background: rgba(255, 255, 255, 0.95);*/
+    /*opacity: 0;*/
 
 /*    -webkit-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
     -moz-transition: background-color 1s, clip-path 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);

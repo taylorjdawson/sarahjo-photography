@@ -146,7 +146,7 @@ the top of the page (position:fixed and top:0) */
 
 /*Container for the navbar to produce a shadow effect behind the navbar*/
 #navtainer {
-    height: 40vh;
+    height: 10vh;
     position: fixed;
     width: 100%;
     /*filter: drop-shadow(0px 6px 14px #8e8e8e9c);*/
@@ -154,8 +154,7 @@ the top of the page (position:fixed and top:0) */
 }
 
 .navbar {
-    clip-path: polygon(0 0, 100% 0%, 100% 20%, 0 20%);
-    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 20%, 0 20%);
+
     height: inherit;
     position: inherit;
     width: inherit;

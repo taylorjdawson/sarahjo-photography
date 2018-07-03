@@ -75,17 +75,55 @@
     //Instantiate our navbar object instance
     let navBar = new Navbar($('#navbar'));
 
+    let $header = $('#header');
+
 
     /************************************************
-     * Sticky navigation bar scripts
-     * Source: https://codepen.io/nathanlong/pen/kkLKrL
+     * - Sticky navigation bar scripts
+     * When reaching specified scroll position; it triggers the
+     * navbar to begin sticky
+     * Source: http://joji.me/en-us/blog/how-to-develop-high-performance-onscroll-event
      *************************************************/
-    // When the user scrolls the page, execute myFunction
-    window.onscroll = function () {
-        //toggleNavBar()
+
+    let headerHeight = $header.height();
+    let navBarHeight = navBar.$navBar.height();
+
+    let $window = $(window);
+
+    let scroll = function () {
+        if ($window.scrollTop() + navBarHeight - headerHeight > 0) {
+            navBar.stick();
+        } else {
+            navBar.unstick();
+        }
     };
 
-    let $header = $('#header');
+    let raf = window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        window.oRequestAnimationFrame;
+
+    let lastScrollTop = $window.scrollTop();
+
+    if (raf) {
+        loop();
+    }
+
+    function loop() {
+        let  scrollTop = $window.scrollTop();
+
+        if (lastScrollTop === scrollTop) {
+            raf(loop);
+            return;
+        } else {
+            lastScrollTop = scrollTop;
+
+            // fire scroll function if scrolls vertically
+            scroll();
+            raf(loop);
+        }
+    }
 
     // Add the sticky class to the header when you reach its scroll position. Remove "sticky"
     // when you leave the scroll position

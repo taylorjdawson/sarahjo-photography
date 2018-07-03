@@ -108,6 +108,10 @@ with JS when it reaches its scroll position */
     z-index: 10;
     color: white;
 
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 
     /*Quadratic*/
     -webkit-transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);

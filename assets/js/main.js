@@ -41,9 +41,9 @@
 
             this.menuIsOpen = !this.menuIsOpen;
 
-            if (atPageTop()) {
+            //if (atPageTop()) {
                 this.toggleSticky();
-            }
+            //}
 
             this.$navBar.toggleClass('menu-open');
 

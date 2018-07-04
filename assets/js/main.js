@@ -41,9 +41,9 @@
 
             this.menuIsOpen = !this.menuIsOpen;
 
-            //if (atPageTop()) {
+            if (!atNavbarRevealPoint()) {
                 this.toggleSticky();
-            //}
+            }
 
             this.$navBar.toggleClass('menu-open');
 
@@ -81,7 +81,7 @@
     /************************************************
      * - Sticky navigation bar scripts
      * When reaching specified scroll position; it triggers the
-     * navbar to begin sticky
+     * navbar to become "sticky"
      * Source: http://joji.me/en-us/blog/how-to-develop-high-performance-onscroll-event
      *************************************************/
 
@@ -90,12 +90,17 @@
 
     let $window = $(window);
 
+    // Add the sticky class to the header when you reach its scroll position. Remove "sticky"
+    // when you leave the scroll position
+    let atNavbarRevealPoint = () => {return $window.scrollTop() + navBarHeight - headerHeight > 0};
+
     let scroll = function () {
-        if ($window.scrollTop() + navBarHeight - headerHeight > 0) {
+        if (atNavbarRevealPoint()) {
             navBar.stick();
-        } else {
+        } else if (!navBar.menuIsOpen){
             navBar.unstick();
         }
+
     };
 
     let raf = window.requestAnimationFrame ||
@@ -125,22 +130,13 @@
         }
     }
 
-    // Add the sticky class to the header when you reach its scroll position. Remove "sticky"
-    // when you leave the scroll position
-    function toggleNavBar() { // TODO: Possibly make more efficient
-        if (!atPageTop()) {
-            navBar.stick();
-        }
-        else if (!navBar.menuIsOpen) {
-            navBar.unstick();
-        }
-    }
+
 
     //TODO: Comment
-    function atPageTop() { // TODO: Arrow?
+/*    function atNavbarRevealPoint() { // TODO: Arrow?
         let bottom = $header.offset().top + $header.outerHeight(true);
         return !((bottom - window.pageYOffset) < navBar.$navBar.outerHeight(true))
-    }
+    }*/
 
     /************************************************
      * Smooth scroll

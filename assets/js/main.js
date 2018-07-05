@@ -87,12 +87,12 @@
 
     let headerHeight = $header.height();
     let navBarHeight = navBar.$navBar.height();
-
+    let $parallaxWindow = $('.parallax');
     let $window = $(window);
 
     // Add the sticky class to the header when you reach its scroll position. Remove "sticky"
     // when you leave the scroll position
-    let atNavbarRevealPoint = () => {return $window.scrollTop() + navBarHeight - headerHeight > 0};
+    let atNavbarRevealPoint = () => {return $parallaxWindow.scrollTop() + navBarHeight - headerHeight > 0};
 
     let scroll = function () {
         if (atNavbarRevealPoint()) {
@@ -109,14 +109,14 @@
         window.msRequestAnimationFrame ||
         window.oRequestAnimationFrame;
 
-    let lastScrollTop = $window.scrollTop();
+    let lastScrollTop = $parallaxWindow.scrollTop();
 
     if (raf) {
         loop();
     }
 
     function loop() {
-        let  scrollTop = $window.scrollTop();
+        let  scrollTop = $parallaxWindow.scrollTop();
 
         if (lastScrollTop === scrollTop) {
             raf(loop);

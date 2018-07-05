@@ -28,20 +28,19 @@ body {
 }
 
 .header {
-    /*TODO: Need to workout how this should scale with desktop.
-            consider: background-attachment: fixed;
-            requires figuring out how to control where the image starts (might just need to edit)
-    */
-    background-attachment: fixed;
-    /*    background-position-y: 18%;*/
-    background-position-x: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40vh;
+    z-index: -1;
+}
+
+.header .header-img {
     background-size: cover;
     background-image: url("../images/benjamin-combs-27619-unsplash.jpg");
-    height: 40vh;
     width: 100%;
-    display: flex; /*TODO: Might be able to remove*/
-    /*align-items: center;*/
-    justify-content: center; /*Consider: Using navbar div might be able to remove in future but depends if comps. get added to navbar*/
+    height: 100%;
 }
 
 .section {
@@ -310,6 +309,7 @@ bar 1 rotate(-135deg) translate(32px, 0px) rotateX(-180deg);
     display: flex;
     flex-wrap: wrap;
     padding: 0 20px;
+    background-color: white;
 }
 
 .column {
@@ -534,14 +534,16 @@ footer {
     height: 50vh;
 }
 
-/* Parallax base styles TODO:REMOVE if not using
+/* Parallax base styles
 --------------------------------------------- */
 
 .parallax {
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
+
     -webkit-perspective: 1px;
+    -moz-perspective: 1px;
     perspective: 1px;
 }
 
@@ -554,11 +556,27 @@ footer {
 }
 
 .parallax__layer--base {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
 }
 
 .parallax__layer--back {
-    -webkit-transform: translateZ(-1px);
-    transform: translateZ(-1px);
+    -webkit-transform: scale(2) translate3d(0, -15vh, -1px);
+    -moz-transform: scale(2) translate3d(0, -15vh, -1px);
+    -ms-transform: scale(2) translate3d(0, -15vh, -1px);
+    -o-transform: scale(2) translate3d(0, -15vh, -1px);
+    transform: scale(2) translate3d(0, -15vh, -1px);
+}
+
+.parallax__group {
+    position: relative;
+    height: 40vh;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.parallax__group--debug {
+    transform: translate3d(700px, 0, -800px) rotateY(30deg);
 }

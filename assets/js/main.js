@@ -46,6 +46,7 @@
             }
 
             this.$navBar.toggleClass('menu-open');
+            $('.menu').toggleClass('menu-open');
 
             $('#navbar-items').toggleClass('menu-open');
 

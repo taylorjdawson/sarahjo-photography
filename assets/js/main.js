@@ -87,7 +87,7 @@
      *************************************************/
 
     let headerHeight = $header.height();
-    let navBarHeight = navBar.$navBar.height();
+    let navBarHeight = $('#site-name').height(); // Same height as the visible portion of navbar
     let $parallaxWindow = $('.parallax');
     let $window = $(window);
 

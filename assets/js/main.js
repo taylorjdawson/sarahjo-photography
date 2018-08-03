@@ -30,9 +30,11 @@
      *
      *************************************************/
 
-    function Navbar($navBar) {
+    let $navbarItems = $('#navbar-items');
 
-        this.$navBar = $navBar;
+    function Navbar($navtainer) {
+
+        this.$navtainer = $navtainer;
         this.navBarIsSticky = false;
         this.menuIsOpen = false;
 
@@ -45,10 +47,19 @@
                 this.toggleSticky();
             }
 
-            this.$navBar.toggleClass('menu-open');
+            this.$navtainer.toggleClass('menu-open');
             $('.menu').toggleClass('menu-open');
 
-            $('#navbar-items').toggleClass('menu-open');
+
+
+            if(! ($navbarItems.hasClass('easeout') || $navbarItems.hasClass('easein')) )
+            {
+                $navbarItems.addClass('easeout')
+            }
+
+            $navbarItems.toggleClass('easeout easein');
+
+
 
             /*There has to be a better way*/
             $('#menu-icon-bar-0').toggleClass('menu-open');
@@ -58,23 +69,23 @@
         };
 
         this.toggleSticky = function () {
-            this.$navBar.toggleClass("sticky");
+            this.$navtainer.toggleClass("sticky");
             this.navBarIsSticky = !this.navBarIsSticky;
         };
 
         this.stick = function () {
-            this.$navBar.addClass("sticky");
+            this.$navtainer.addClass("sticky");
             this.navBarIsSticky = true;
         };
 
         this.unstick = function () {
-            this.$navBar.removeClass("sticky");
+            this.$navtainer.removeClass("sticky");
             this.navBarIsSticky = false;
         }
     }
 
     //Instantiate our navbar object instance
-    let navBar = new Navbar($('#navbar'));
+    let navBar = new Navbar($('#navtainer'));
 
     let $header = $('#header');
 
@@ -136,7 +147,7 @@
     //TODO: Comment
 /*    function atNavbarRevealPoint() { // TODO: Arrow?
         let bottom = $header.offset().top + $header.outerHeight(true);
-        return !((bottom - window.pageYOffset) < navBar.$navBar.outerHeight(true))
+        return !((bottom - window.pageYOffset) < navBar.$navtainer.outerHeight(true))
     }*/
 
     /************************************************

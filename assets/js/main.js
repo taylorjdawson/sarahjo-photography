@@ -50,16 +50,12 @@
             this.$navtainer.toggleClass('menu-open');
             $('.menu').toggleClass('menu-open');
 
-
-
             if(! ($navbarItems.hasClass('easeout') || $navbarItems.hasClass('easein')) )
             {
                 $navbarItems.addClass('easeout')
             }
 
             $navbarItems.toggleClass('easeout easein');
-
-
 
             /*There has to be a better way*/
             $('#menu-icon-bar-0').toggleClass('menu-open');
@@ -329,6 +325,18 @@
      *************************************************/
     $('#menu-btn').click(function () {
         navBar.toggleMenu();
+
+        if(document.getElementsByClassName('navbar')[0].dataset.state === 'closed') {
+            $('#animate-open-menu')[0].beginElement()
+            document.getElementsByClassName('navbar')[0].dataset.state = 'open'
+            console.log(document.getElementsByClassName('navbar')[0].dataset.state)
+        } else {
+            $('#animate-close-menu')[0].beginElement()
+            document.getElementsByClassName('navbar')[0].dataset.state = 'closed'
+            console.log(document.getElementsByClassName('navbar')[0].dataset.state)
+        }
+
+
     });
     $('.navbar-item').click(function () {
         navBar.toggleMenu();

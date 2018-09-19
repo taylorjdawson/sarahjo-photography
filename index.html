@@ -24,8 +24,43 @@
 <!--Header-->
 
 <div id="navtainer">
-    <div id='navbar' class='navbar'>
-    </div>
+    <svg class="navbar" preserveAspectRatio="none" width="100%" height="40vh" viewBox="0 0 100 100" data-state="closed">
+        <polygon id="navbar-menu" points="0 0, 0 20, 100 20, 100 0">
+
+            <animate
+                    id="animate-open-menu"
+                    fill="freeze"
+                    begin="indefinite"
+                    attributeName="points"
+                    dur="800ms"
+                    calcMode="spline"
+                    from="0 0, 0 20, 100 20, 100 0"
+                    to="0 0, 0 20, 100 100, 100 0"
+                    values="0 0, 0 20, 100 20, 100 0;
+                             0 0, 0 20, 100 60, 100 0;
+                             0 0, 0 20, 100 100, 100 0"
+                    keyTimes="0; .5; 1"
+                    keySplines=" 0.47 0 0.745 0.715;
+                                  0.39 0.575 0.565 1"/>
+            <animate
+                    id="animate-close-menu"
+                    fill="freeze"
+                    begin="indefinite"
+                    attributeName="points"
+                    dur="800ms"
+                    calcMode="spline"
+                    from="0 0, 0 20, 100 100, 100 0"
+                    to="0 0, 0 20, 100 20, 100 0"
+                    values="0 0, 0 20, 100 100, 100 0;
+                             0 0, 0 20, 100 60, 100 0;
+                             0 0, 0 20, 100 20, 100 0"
+                    keyTimes="0; .5; 1"
+                    keySplines=" 0.47 0 0.745 0.715;
+                                  0.39 0.575 0.565 1"/>
+            />
+
+        </polygon>
+    </svg>
     <div class="menu">
         <!--CONSIDER: Change to naming to menu-items -->
         <div id="navbar-items" class='navbar-items'> <!--TODO: Remove dup id class (pick one)-->
@@ -175,17 +210,17 @@
 
         </div>
         <!--<div class='column'>-->
-            <!--<img src='assets/images/nicolo-di-giovanni-509971-unsplash.jpg'>-->
-            <!--<img src='assets/images/nina-perminova-414508-unsplash.jpg'>-->
-            <!--<img src='assets/images/oliver-roos-526994-unsplash.jpg'>-->
-            <!--<img src='assets/images/savs-511970-unsplash.jpg'>-->
+        <!--<img src='assets/images/nicolo-di-giovanni-509971-unsplash.jpg'>-->
+        <!--<img src='assets/images/nina-perminova-414508-unsplash.jpg'>-->
+        <!--<img src='assets/images/oliver-roos-526994-unsplash.jpg'>-->
+        <!--<img src='assets/images/savs-511970-unsplash.jpg'>-->
 
         <!--</div>-->
         <!--<div class='column'>-->
-            <!--<img src='assets/images/fernando-puente-619762-unsplash.jpg'>-->
-            <!--<img src='assets/images/micheile-henderson-597875-unsplash.jpg'>-->
-            <!--<img src='assets/images/sebastian-pociecha-653338-unsplash.jpg'>-->
-            <!--<img src='assets/images/yusuf-evli-651942-unsplash.jpg'>-->
+        <!--<img src='assets/images/fernando-puente-619762-unsplash.jpg'>-->
+        <!--<img src='assets/images/micheile-henderson-597875-unsplash.jpg'>-->
+        <!--<img src='assets/images/sebastian-pociecha-653338-unsplash.jpg'>-->
+        <!--<img src='assets/images/yusuf-evli-651942-unsplash.jpg'>-->
         <!--</div>-->
 
     </div>
@@ -259,7 +294,8 @@
     </div>
     <footer>
         <div class="copyright">
-            Made with <i class="material-icons">favorite</i> by <a href="http://taylorjdawson.com" target="_blank">Taylor Dawson</a>.
+            Made with <i class="material-icons">favorite</i> by <a href="http://taylorjdawson.com" target="_blank">Taylor
+            Dawson</a>.
         </div>
     </footer>
 </div>

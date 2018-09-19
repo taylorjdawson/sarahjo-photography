@@ -336,10 +336,19 @@
             console.log(document.getElementsByClassName('navbar')[0].dataset.state)
         }
 
-
     });
     $('.navbar-item').click(function () {
         navBar.toggleMenu();
+
+        if(document.getElementsByClassName('navbar')[0].dataset.state === 'closed') {
+            $('#animate-open-menu')[0].beginElement()
+            document.getElementsByClassName('navbar')[0].dataset.state = 'open'
+            console.log(document.getElementsByClassName('navbar')[0].dataset.state)
+        } else {
+            $('#animate-close-menu')[0].beginElement()
+            document.getElementsByClassName('navbar')[0].dataset.state = 'closed'
+            console.log(document.getElementsByClassName('navbar')[0].dataset.state)
+        }
     });
 
     /************************************************

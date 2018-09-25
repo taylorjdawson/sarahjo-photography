@@ -338,13 +338,13 @@
 
     });
 
-    document.getElementById('navbar-menu').addEventListener('onend', function() {
-        console.log('Animation finished');
+    document.getElementById('animate-close-menu').addEventListener('onend', function() {
+        alert('Animation finished');
     }, false);
 
-    document.getElementsByClassName('navbar')[0].addEventListener('onend', function() {
-        console.log('Animation finished');
-    }, false);
+    // document.getElementsByClassName('navbar')[0].addEventListener('onend', function() {
+    //     alert('Animation finished');
+    // }, false);
 
 
     $('.navbar-item').click(function () {

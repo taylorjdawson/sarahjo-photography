@@ -4,6 +4,7 @@
     <meta charset='UTF-8'>
 
     <link rel='stylesheet' href='assets/css/styles.css'>
+    <link rel='stylesheet' href='assets/css/about.css'>
 
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <meta name='viewport' content='height=device-height, initial-scale=1'>
@@ -21,8 +22,8 @@
 
 </head>
 <body>
-<!--Header-->
 
+<!--Header-->
 <div id="navtainer">
     <svg class="navbar" preserveAspectRatio="none" width="100%" height="40vh" viewBox="0 0 100 100" data-state="closed">
         <polygon id="navbar-menu" points="0 0, 0 20, 100 20, 100 0">
@@ -43,6 +44,7 @@
                     keySplines=" 0.47 0 0.745 0.715;
                                   0.39 0.575 0.565 1"/>
             <animate
+                    onend="alert('I ended ')"
                     id="animate-close-menu"
                     fill="freeze"
                     begin="indefinite"
@@ -187,11 +189,16 @@
 
 
 <div class="parallax">
+
+    <!--Header-->
     <div id='header' class='header parallax__group'>
         <div class="header-img parallax__layer parallax__layer--back">
 
         </div>
     </div>
+
+
+    <div id="home-content">
 
     <!--Photos Section-->
     <div id='photo-grid'>
@@ -292,6 +299,51 @@
             </div>
         </form>
     </div>
+
+    </div>
+
+    <div id="about-content" style="display: none; ">
+        <div class="content">
+            <div class="content-title">
+                <div>ᐱ</div><div>bout</div>
+            </div>
+            <hr>
+            <p>
+                Hello, my name is Sarah and I am a photo fanatic! Ever since I was a young girl, photos have held a special
+                place in my heart. From looking through antique family photo albums at grandmas house, to having my bedroom
+                walls covered in 5x7 memories, photos have always been a part of my life. Not long after I made my grand
+                entrance into this world, a photographer snapped a photo of baby Sarah Jowelle Kessi and gave it to my
+                parents. That same photo, would hang on the wall for the past twenty years, reminding my parents of that
+                little miracle.
+            </p>
+            <p>
+                Many photos have graced our walls over the years, marking moments to be remembered. But
+                captured moments don’t always fill a heart with warm, fuzzy feelings. There are some photos that bring a
+                sweet sadness. Like this photo of my Great-Grandma Tudy. Little did I know, this would be the last photo
+                that I would have of her. And oh how I cherish it! I miss her very much, and when I see this photo, I am
+                filled with a sadness. A sweet sadness of the memories of a special person in my life. My heart smiles.
+
+            </p>
+
+        </div>
+        <div class="image parallax__group">
+            <img class="parallax__layer parallax__layer--back" id="tudy-image" src="assets/images/tudy_rotated.jpg"/>
+        </div>
+        <div class="content">
+            <p>
+                I had never thought of choosing photography as a career until I was nearing my final years of highschool.
+                Throughout my Senior year I listened as colleges would tell about all they had to offer. Nothing seemed to
+                stand out to me. My ultimate passion and dream is to one day be a stay-at-home momma. To me, fulfilling this
+                dream didn’t look like four or more years of college followed by working full-time for someone else and
+                their schedule. The idea of choosing to make my passion for photography my career started to take shape.
+                Photography has given me the freedom to diligently invest into my dreams of being a godly wife and mother
+                someday. I’m doing what I love, and enjoy the people and the places that the Lord has lead me to through the
+                camera lens. Whether it’s capturing little miracles, marking milestones, or remembering the past, I am
+                thankful for the gift of photography and the opportunities it brings to capture what makes one’s heart full.
+            </p>
+        </div>
+    </div>
+
     <footer>
         <div class="copyright">
             Made with <i class="material-icons">favorite</i> by <a href="http://taylorjdawson.com" target="_blank">Taylor

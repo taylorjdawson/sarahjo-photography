@@ -337,6 +337,16 @@
         }
 
     });
+
+    document.getElementById('navbar-menu').addEventListener('onend', function() {
+        console.log('Animation finished');
+    }, false);
+
+    document.getElementsByClassName('navbar')[0].addEventListener('onend', function() {
+        console.log('Animation finished');
+    }, false);
+
+
     $('.navbar-item').click(function () {
         navBar.toggleMenu();
 

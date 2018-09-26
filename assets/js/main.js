@@ -310,7 +310,7 @@
 
         // Email.send(from_email,
         //     to_email,
-        //     subject, /* CONSIDER: This being the type of picture wanted (maybe)*/
+        //     subject, /* CONSIDER: This being the type of pictures wanted (maybe)*/
         //     `Name: ${inquirers_name} \n Message: \n ${message}`,
         //     {token:smpt_token});
 
@@ -337,15 +337,6 @@
         }
 
     });
-
-    document.getElementById('animate-close-menu').addEventListener('onend', function() {
-        alert('Animation finished');
-    }, false);
-
-    // document.getElementsByClassName('navbar')[0].addEventListener('onend', function() {
-    //     alert('Animation finished');
-    // }, false);
-
 
     $('.navbar-item').click(function () {
         navBar.toggleMenu();
